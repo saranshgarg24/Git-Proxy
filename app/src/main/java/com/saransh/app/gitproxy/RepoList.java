@@ -15,11 +15,19 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 public class RepoList extends Fragment {
+
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mQuery;
+    private String mType;
 
     String AccessToken;
     RecyclerView r_list;
@@ -32,8 +40,13 @@ public class RepoList extends Fragment {
         // Required empty public constructor
     }
 
-    public static RepoList newInstance(String param1, String param2) {
+    public static RepoList newInstance(String param1,String param2) {
+
         RepoList fragment = new RepoList();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
 
         return fragment;
     }
@@ -41,6 +54,10 @@ public class RepoList extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mQuery = getArguments().getString(ARG_PARAM1);
+            mType = getArguments().getString(ARG_PARAM2);
+        }
     }
 
     @Override
@@ -73,7 +90,7 @@ public class RepoList extends Fragment {
         r_list.setLayoutManager(llm);
     }
 
-    class getRepositries extends AsyncTask<Object, Object, JSONArray> {
+    class getRepositries extends AsyncTask<Object, Object, JSONObject> {
 
         @Override
         protected void onPreExecute() {
@@ -86,14 +103,16 @@ public class RepoList extends Fragment {
 
 
         @Override
-        protected JSONArray doInBackground(Object... args) {
+        protected JSONObject doInBackground(Object... args) {
 
             JSONParser jsonParser = new JSONParser();
 
-            String url = "https://api.github.com/user/repos";
-            url = url + "?access_token=" + AccessToken;
 
-            JSONArray response = jsonParser.getJSONFromUrl(url);
+            String url = "https://api.github.com/search/repositories?q=";
+
+            url = url + mQuery;
+
+            JSONObject response = jsonParser.getJSONFromUrl(url);
 
             if (response != null) {
                 return response;
@@ -102,14 +121,13 @@ public class RepoList extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(JSONArray k) {
+        protected void onPostExecute(JSONObject k) {
 
             //  loader.hide();
-            if (k != null) {
 
+            if (k != null) {
                 RepoAdapter recyclerAdapter = new RepoAdapter(getContext(), k);
                 r_list.setAdapter(recyclerAdapter);
-
             } else {
                 Toast.makeText(getContext(), "no internet"
                         , Toast.LENGTH_SHORT).show();

@@ -4,7 +4,6 @@ import android.util.Log;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -145,11 +144,11 @@ public class JSONParser {
         return result.toString();
     }
 
-    public JSONArray getJSONFromUrl(String url) {
+    public JSONObject getJSONFromUrl(String url) {
 
         String USER_AGENT = "Mozilla/5.0";
         StringBuffer response = new StringBuffer();
-        JSONArray jsonObject = null;
+        JSONObject jsonObject = null;
         URL obj = null;
         try {
             obj = new URL(url);
@@ -172,7 +171,7 @@ public class JSONParser {
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
-            jsonObject = new JSONArray(String.valueOf(response));
+            jsonObject = new JSONObject(String.valueOf(response));
             in.close();
 
         } catch (MalformedURLException e) {

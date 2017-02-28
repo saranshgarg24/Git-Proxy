@@ -2,7 +2,6 @@ package com.saransh.app.gitproxy;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,21 +23,23 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
     List<String> lang = new ArrayList<>();
     List<String> owners = new ArrayList<>();
 
-    public RepoAdapter(Context context, JSONArray repos){
+    public RepoAdapter(Context context, JSONObject repos){
+
         r_context = context;
-        count = repos.length();
-        Log.d("count", String.valueOf(count));
-        for (int i = 0; i<count;i++)
-        {
-            try {
-                JSONObject obj = repos.getJSONObject(i);
+        try{
+            JSONArray items = repos.getJSONArray("items");
+
+            count = items.length();
+
+            for (int i = 0; i<count;i++) {
+                JSONObject obj = items.getJSONObject(i);
                 // Log.d("OBJ", String.valueOf(obj));
                 title.add(obj.getString("name"));
                 lang.add(obj.getString("language"));
                 owners.add(obj.getJSONObject("owner").getString("login"));
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
@@ -56,16 +57,16 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
         holder.setIsRecyclable(false);
         holder.title.setText(title.get(position));
         holder.languages.setText(lang.get(position));
-        holder.layout.setOnClickListener(new View.OnClickListener() {
+        /*holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent i = new Intent(r_context,Commits.class);
+                Intent i = new Intent(r_context,Commits.class);
                 i.putExtra("repo",title.get(position));
                 i.putExtra("owner",owners.get(position));
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                r_context.startActivity(i);*/
+                r_context.startActivity(i);
             }
-        });
+        });*/
         //Set Images And Position Here
 
     }//onBindViewHolder()
