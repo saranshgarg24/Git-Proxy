@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_5ba155f6e7b0e0f0ed025382a2920e4e610b44f4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_bfa4cd025e5ce9c310157416dc9151919f4e011a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_401dc093a90ef600d6a0621fc11489a54e87369e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_14c3d1c287a65b90ca8707e9e2a3e210414f2fda.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_ce6a70f613d5ebb9a86880a9c3b94405a0fbd0dc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_0240b47ef0c4bf58b0aa79bce31011dfa272977d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_f3a282680d6e4b2bce930a8a3e6bb6e12c22faa0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_e4089a8f23c0a85673435608744dc42bf8937995.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_f2084917f837b2f08cbe1925b71d7a9bc8bfd6b8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-24.2.1_f3cd37310f9a529fffee2c641201ee4f864c22b2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_0e358fe76ae53138260dac1907efd1d4c28adf20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_3a31398fb36b4ebf8c06df42cf179802a19193b2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_84757647800be59c0c2a1da84f688bb6f5f53fb2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_c08f32d611e19e31bcfc2c6eca5ce5a471e231c6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/com.android.support-design-24.2.1_8ad4af29240b47940f50ffd674f90a4d2c476e59.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_231088f6d24a7e524552dc9797297ffa2ec46745.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_75f989c186929cf0e07960cf14ade3a5b20a8983.jar" />
+    </item>
+
+</items>
