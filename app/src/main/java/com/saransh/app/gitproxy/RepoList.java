@@ -9,12 +9,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 
@@ -25,9 +25,13 @@ public class RepoList extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private static final String LOGIN = "Login";
+    private static final String SEARCH = "Search";
+
     // TODO: Rename and change types of parameters
     private String mQuery;
     private String mType;
+    private String accesToken;
 
     String AccessToken;
     RecyclerView r_list;
@@ -55,8 +59,14 @@ public class RepoList extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mQuery = getArguments().getString(ARG_PARAM1);
+
             mType = getArguments().getString(ARG_PARAM2);
+            if (mType == LOGIN){
+                accesToken = getArguments().getString(ARG_PARAM1);
+            }
+            else if (mType == SEARCH){
+                mQuery = getArguments().getString(ARG_PARAM1);
+            }
         }
     }
 
@@ -106,11 +116,20 @@ public class RepoList extends Fragment {
         protected JSONObject doInBackground(Object... args) {
 
             JSONParser jsonParser = new JSONParser();
+            String url = null;
 
+            if (mType == LOGIN){
+                url = "https://api.github.com/user/repos";
+                url = url + "?access_token=" + AccessToken;
+                Log.d("RepoList",url);
+            }
+            else if (mType == SEARCH){
+                url = "https://api.github.com/search/repositories?q=";
 
-            String url = "https://api.github.com/search/repositories?q=";
+                url = url + mQuery;
 
-            url = url + mQuery;
+            }
+
 
             JSONObject response = jsonParser.getJSONFromUrl(url);
 

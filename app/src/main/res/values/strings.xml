@@ -11,4 +11,5 @@
     <string name="menu_search">Search</string>
     <string name="search_hint">Search Hint</string>
     <string name="search_result">Search Result</string>
+    <string name="no_search_item">You didn\'t search any item till now</string>
 </resources>

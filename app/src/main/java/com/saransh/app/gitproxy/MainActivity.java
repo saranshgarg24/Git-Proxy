@@ -30,11 +30,11 @@ public class MainActivity extends ActionBarActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
-
-
-        fragmentTransaction.replace(R.id.fragment, Login.newInstance(getApplicationContext()), "Login");
+        fragmentTransaction.replace(R.id.fragment, new SearchList(getApplicationContext()), "Login");
         fragmentTransaction.commit();
 
 
@@ -81,9 +81,12 @@ public class MainActivity extends ActionBarActivity
                 // use this method when query submitted
 
                 Toast.makeText(getApplicationContext(), query, Toast.LENGTH_SHORT).show();
+
+                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                db.addSearchQuery(query);
+
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
-
 
                 fragmentTransaction.replace(R.id.fragment, RepoList.newInstance(query,"Search"));
                 fragmentTransaction.commit();
