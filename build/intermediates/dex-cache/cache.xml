@@ -129,6 +129,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
+        <dex dex="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/pre-dexed/debug/de.hdodenhof-circleimageview-2.0.0_7b761aab8be3440b1ba3ba61a16f14ee016c6ff7.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/saranshgarg/AndroidStudioProjects/GitProxy/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"

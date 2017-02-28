@@ -2,6 +2,7 @@ package com.saransh.app.gitproxy;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
@@ -22,10 +27,16 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
     List<String> title = new ArrayList<>();
     List<String> lang = new ArrayList<>();
     List<String> owners = new ArrayList<>();
+    List<String> stars = new ArrayList<>();
+    List<String> forks = new ArrayList<>();
+    List<String> lastUpdates = new ArrayList<>();
+    public static final SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
     public RepoAdapter(Context context, JSONObject repos){
 
         r_context = context;
+        String dateStr;
+
         try{
             JSONArray items = repos.getJSONArray("items");
 
@@ -34,11 +45,21 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
             for (int i = 0; i<count;i++) {
                 JSONObject obj = items.getJSONObject(i);
                 // Log.d("OBJ", String.valueOf(obj));
-                title.add(obj.getString("name"));
+                title.add(obj.getString("full_name"));
                 lang.add(obj.getString("language"));
                 owners.add(obj.getJSONObject("owner").getString("login"));
+                stars.add(obj.getString("stargazers_count"));
+                forks.add(obj.getString("forks_count"));
+
+                dateStr = obj.getString("updated_at");
+                Date date = inputFormat.parse(dateStr);
+                lastUpdates.add(String.valueOf(DateUtils.getRelativeTimeSpanString(date.getTime() ,
+                        Calendar.getInstance().getTimeInMillis(),
+                        DateUtils.MINUTE_IN_MILLIS)));
             }
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
@@ -57,6 +78,10 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
         holder.setIsRecyclable(false);
         holder.title.setText(title.get(position));
         holder.languages.setText(lang.get(position));
+        holder.starGuage.setText(stars.get(position));
+        holder.fork.setText(forks.get(position));
+        holder.owner.setText(owners.get(position));
+        holder.lastUpdated.setText(lastUpdates.get(position));
         /*holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,6 +109,10 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
         int HolderId = 1;
         TextView title;
         TextView languages;
+        TextView starGuage;
+        TextView fork;
+        TextView owner;
+        TextView lastUpdated;
         LinearLayout layout;
 
         public ViewHolder(View itemView, int item_type, final Context context) {
@@ -91,6 +120,13 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
 
             layout = (LinearLayout) itemView.findViewById(R.id.layout);
             title = (TextView) itemView.findViewById(R.id.title);
+            starGuage = (TextView) itemView.findViewById(R.id.star);
+            fork = (TextView) itemView.findViewById(R.id.fork);
+            owner = (TextView) itemView.findViewById(R.id.owner);
+
+
+            lastUpdated = (TextView) itemView.findViewById(R.id.updated);
+
             languages = (TextView) itemView.findViewById(R.id.lang);
 
 
