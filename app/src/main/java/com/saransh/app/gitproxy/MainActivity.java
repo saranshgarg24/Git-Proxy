@@ -87,7 +87,6 @@ public class MainActivity extends ActionBarActivity
 
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
-
                 fragmentTransaction.replace(R.id.fragment, RepoList.newInstance(query,"Search"));
                 fragmentTransaction.commit();
                 return false;
@@ -128,17 +127,12 @@ public class MainActivity extends ActionBarActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        if (id == R.id.nav_home) {
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment, new SearchList(getApplicationContext()));
+            fragmentTransaction.commit();
+        } else if (id == R.id.nav_bookmark) {
 
         }
 
