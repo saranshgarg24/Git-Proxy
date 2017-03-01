@@ -32,7 +32,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.bookmark_item, parent, false);
         ViewHolder vItem = new ViewHolder(v, viewType, parent.getContext());
 
         return vItem;
@@ -49,9 +49,6 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
         holder.fork.setText(repo.get(3));
         holder.owner.setText(repo.get(4));
         holder.lastUpdated.setText(repo.get(5));
-
-
-
     }
 
     @Override
@@ -71,7 +68,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
         TextView fork;
         TextView owner;
         TextView lastUpdated;
-        ImageView btnBookmark;
+        ImageView btnCross;
         LinearLayout layout;
 
         public ViewHolder(View itemView, int item_type, final Context context) {
@@ -84,7 +81,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
             owner = (TextView) itemView.findViewById(R.id.owner);
             lastUpdated = (TextView) itemView.findViewById(R.id.updated);
             languages = (TextView) itemView.findViewById(R.id.lang);
-            btnBookmark = (ImageView) itemView.findViewById(R.id.btn_bookmark);
+            btnCross = (ImageView) itemView.findViewById(R.id.btn_cross);
 
             HolderId = 1;
         }//if

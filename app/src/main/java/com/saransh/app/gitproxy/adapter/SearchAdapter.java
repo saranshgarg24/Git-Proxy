@@ -7,10 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.saransh.app.gitproxy.helper.DatabaseHandler;
 import com.saransh.app.gitproxy.R;
+import com.saransh.app.gitproxy.helper.DatabaseHandler;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
@@ -25,6 +26,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
         DatabaseHandler db = new DatabaseHandler(r_context);
         title = db.getSearchQueries();
+        title = new ArrayList<String>(new HashSet<String>(title));
         count = title.size();
     }
 

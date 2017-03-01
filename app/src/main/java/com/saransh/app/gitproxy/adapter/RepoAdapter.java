@@ -82,16 +82,24 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.setIsRecyclable(false);
+        final DatabaseHandler db = new DatabaseHandler(r_context);
         holder.title.setText(title.get(position));
         holder.languages.setText(lang.get(position));
         holder.starGuage.setText(stars.get(position));
         holder.fork.setText(forks.get(position));
         holder.owner.setText(owners.get(position));
         holder.lastUpdated.setText(lastUpdates.get(position));
+
+        if (db.IsBookmarked(title.get(position))){
+            holder.btnBookmark.setImageResource(R.drawable.ic_bookmark_black_24dp);
+        }else {
+            holder.btnBookmark.setImageResource(R.drawable.ic_bookmark_border_black_24dp);
+        }
+
         holder.btnBookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseHandler db = new DatabaseHandler(r_context);
+
                 if (db.IsBookmarked(title.get(position))){
 
                  holder.btnBookmark.setImageResource(R.drawable.ic_bookmark_border_black_24dp);
@@ -104,7 +112,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
             }
         });
 
-
+        db.close();
     }
 
     @Override
