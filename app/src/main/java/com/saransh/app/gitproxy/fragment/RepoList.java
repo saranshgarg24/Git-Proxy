@@ -62,7 +62,8 @@ public class RepoList extends Fragment {
 
         if(ni == null)
         {
-            Toast.makeText(getContext(), "Can't Connect to the Internet", Toast.LENGTH_LONG).show();
+            StyleableToast.makeText(getContext(), "Can't Connect to the Internet",
+                    Toast.LENGTH_LONG,R.style.StyledToast).show();
         }
         else {
 
@@ -116,8 +117,8 @@ public class RepoList extends Fragment {
                 RepoAdapter recyclerAdapter = new RepoAdapter(getContext(), k);
                 r_list.setAdapter(recyclerAdapter);
             } else {
-                Toast.makeText(getContext(), "no internet"
-                        , Toast.LENGTH_SHORT).show();
+                StyleableToast.makeText(getActivity().getApplicationContext(),"Can't Connect to Server",
+                        Toast.LENGTH_LONG,R.style.StyledToast).spinIcon().show();
             }
 
 

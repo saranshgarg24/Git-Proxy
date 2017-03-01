@@ -1,11 +1,11 @@
-package com.saransh.app.gitproxy;
+package com.saransh.app.gitproxy.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-import com.saransh.app.gitproxy.activity.MainActivity;
+import com.saransh.app.gitproxy.R;
 
 public class SplashScreen extends AppCompatActivity {
 
