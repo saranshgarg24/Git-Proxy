@@ -25,8 +25,8 @@
             android:text="Virtual Notice Board"/>
         <ImageView
             android:id="@+id/btn_cross"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:padding="10dp"
             android:tint="#313131"
             android:src="@drawable/ic_close_black_36dp"/>

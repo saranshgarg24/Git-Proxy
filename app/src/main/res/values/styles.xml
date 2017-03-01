@@ -16,4 +16,12 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="StyledToast">
+
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:colorBackground">@color/colorPrimary</item>
+        <item name="android:radius">15dp</item>  radius for corners of the toast shape
+        <item name="android:alpha">255</item>   value between 0-255 where 255 is full solid
+    </style>
+
 </resources>

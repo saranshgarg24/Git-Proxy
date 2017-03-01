@@ -9,51 +9,35 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.saransh.app.gitproxy.helper.JSONParser;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 import com.saransh.app.gitproxy.R;
 import com.saransh.app.gitproxy.adapter.RepoAdapter;
+import com.saransh.app.gitproxy.helper.JSONParser;
 
 import org.json.JSONObject;
 
 
 public class RepoList extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private static final String LOGIN = "Login";
-    private static final String SEARCH = "Search";
-
-    // TODO: Rename and change types of parameters
     private String mQuery;
-    private String mType;
-    private String accesToken;
-
-    String AccessToken;
     RecyclerView r_list;
-
     View v;
-
- //   private OnFragmentInteractionListener mListener;
 
     public RepoList() {
         // Required empty public constructor
     }
 
-    public static RepoList newInstance(String param1,String param2) {
+    public static RepoList newInstance(String param1) {
 
         RepoList fragment = new RepoList();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
 
         return fragment;
@@ -63,14 +47,7 @@ public class RepoList extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
-            mType = getArguments().getString(ARG_PARAM2);
-            if (mType == LOGIN){
-                accesToken = getArguments().getString(ARG_PARAM1);
-            }
-            else if (mType == SEARCH){
-                mQuery = getArguments().getString(ARG_PARAM1);
-            }
+            mQuery = getArguments().getString(ARG_PARAM1);
         }
     }
 
@@ -110,30 +87,17 @@ public class RepoList extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            //     loader.smoothToShow(); //showing the loader
-
-
+            StyleableToast.makeText(getActivity().getApplicationContext(),"Getting Repo List",
+                    Toast.LENGTH_LONG,R.style.StyledToast).spinIcon().show();
         }
-
 
         @Override
         protected JSONObject doInBackground(Object... args) {
 
             JSONParser jsonParser = new JSONParser();
-            String url = null;
 
-            if (mType == LOGIN){
-                url = "https://api.github.com/user/repos";
-                url = url + "?access_token=" + AccessToken;
-                Log.d("RepoList",url);
-            }
-            else if (mType == SEARCH){
-                url = "https://api.github.com/search/repositories?q=";
-
-                url = url + mQuery;
-
-            }
-
+            String url = "https://api.github.com/search/repositories?q=";
+            url = url + mQuery;
 
             JSONObject response = jsonParser.getJSONFromUrl(url);
 

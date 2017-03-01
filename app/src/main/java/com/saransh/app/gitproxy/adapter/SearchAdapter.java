@@ -1,6 +1,8 @@
 package com.saransh.app.gitproxy.adapter;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.saransh.app.gitproxy.R;
+import com.saransh.app.gitproxy.fragment.RepoList;
 import com.saransh.app.gitproxy.helper.DatabaseHandler;
 
 import java.util.ArrayList;
@@ -43,6 +46,17 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.setIsRecyclable(false);
         holder.title.setText(title.get(position));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                activity.getSupportActionBar().setTitle(title.get(position));
+                Fragment fragment  = RepoList.newInstance(title.get(position));
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, fragment).addToBackStack(null).commit();
+            }
+        });
         //Set Images And Position Here
 
     }//onBindViewHolder()

@@ -7,15 +7,19 @@
     android:orientation="vertical">
 
 
-    <!--<TextView
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/no_search_item" />-->
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textColor="#4078c0"
+        android:text="Recent Searches" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/searchList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>

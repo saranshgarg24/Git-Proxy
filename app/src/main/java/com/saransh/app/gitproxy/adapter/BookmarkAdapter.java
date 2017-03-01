@@ -18,7 +18,6 @@ import java.util.List;
 public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHolder> {
 
     Context r_context;
-    int count;
 
     List<List<String>>  bookmarks = new ArrayList<>();
     public BookmarkAdapter(Context context){
@@ -26,7 +25,6 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
         r_context = context;
         DatabaseHandler db = new DatabaseHandler(r_context);
         bookmarks = db.getBookmarks();
-        count = bookmarks.size();
     }
 
     @Override
@@ -49,11 +47,23 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
         holder.fork.setText(repo.get(3));
         holder.owner.setText(repo.get(4));
         holder.lastUpdated.setText(repo.get(5));
+        holder.btnCross.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseHandler db = new DatabaseHandler(r_context);
+                db.deleteBookmark(repo.get(0));
+                notifyItemRemoved(position);
+                notifyDataSetChanged();
+                notifyItemRangeChanged(position, bookmarks.size());
+                bookmarks.remove(position);
+
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return count;
+        return bookmarks.size();
     }
 
 

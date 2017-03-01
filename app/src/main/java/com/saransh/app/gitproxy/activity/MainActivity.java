@@ -9,8 +9,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -19,39 +19,60 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.saransh.app.gitproxy.fragment.BookmarkList;
-import com.saransh.app.gitproxy.helper.DatabaseHandler;
 import com.saransh.app.gitproxy.R;
+import com.saransh.app.gitproxy.fragment.BookmarkList;
 import com.saransh.app.gitproxy.fragment.RepoList;
 import com.saransh.app.gitproxy.fragment.SearchList;
+import com.saransh.app.gitproxy.helper.DatabaseHandler;
 
 
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        initToolbar();
+
+        initFragment();
+
+        initDrawer();
 
 
+    }
 
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment, new SearchList(getApplicationContext()), "Login");
-        fragmentTransaction.commit();
-
-
+    private void initDrawer() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        initNavigationView();
+
+    }
+
+    private void initNavigationView() {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void initFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment, new SearchList(getApplicationContext()));
+        fragmentTransaction.commit();
+
+    }
+
+    private void initToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Home");
     }
 
     @Override
@@ -69,23 +90,30 @@ public class MainActivity extends ActionBarActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
+        initSearchView(menu);
+
+        return true;
+    }
+
+    private void initSearchView(Menu menu) {
+
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //some operation
-            }
-        });
         EditText searchPlate = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+
         searchPlate.setHint("Search");
+
         View searchPlateView = searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
         searchPlateView.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent));
+
         // use this method for search process
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // use this method when query submitted
 
+                toolbar.setTitle(query);
+                searchView.clearFocus();
+                searchView.onActionViewCollapsed();
                 Toast.makeText(getApplicationContext(), query, Toast.LENGTH_SHORT).show();
 
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
@@ -93,7 +121,7 @@ public class MainActivity extends ActionBarActivity
 
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, RepoList.newInstance(query,"Search"));
+                fragmentTransaction.replace(R.id.fragment, RepoList.newInstance(query));
                 fragmentTransaction.commit();
                 return false;
             }
@@ -108,7 +136,7 @@ public class MainActivity extends ActionBarActivity
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
 
-        return true;
+
     }
 
     @Override
@@ -130,17 +158,18 @@ public class MainActivity extends ActionBarActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            toolbar.setTitle("HOME");
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
             fragmentTransaction.replace(R.id.fragment, new SearchList(getApplicationContext()));
             fragmentTransaction.commit();
         } else if (id == R.id.nav_bookmark) {
+            toolbar.setTitle("BOOKMARKS");
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
             fragmentTransaction.replace(R.id.fragment, new BookmarkList(getApplicationContext()));
             fragmentTransaction.commit();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
