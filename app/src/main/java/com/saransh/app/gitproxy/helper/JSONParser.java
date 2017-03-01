@@ -1,4 +1,4 @@
-package com.saransh.app.gitproxy;
+package com.saransh.app.gitproxy.helper;
 
 import android.util.Log;
 

@@ -1,4 +1,4 @@
-package com.saransh.app.gitproxy;
+package com.saransh.app.gitproxy.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,8 +6,12 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.saransh.app.gitproxy.R;
+import com.saransh.app.gitproxy.helper.DatabaseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +28,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
 
     Context r_context;
     int count;
+    int Toggle = 0;
     List<String> title = new ArrayList<>();
     List<String> lang = new ArrayList<>();
     List<String> owners = new ArrayList<>();
@@ -36,6 +41,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
 
         r_context = context;
         String dateStr;
+
 
         try{
             JSONArray items = repos.getJSONArray("items");
@@ -74,7 +80,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
     }//onCreateViewHolder()
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.setIsRecyclable(false);
         holder.title.setText(title.get(position));
         holder.languages.setText(lang.get(position));
@@ -82,19 +88,24 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
         holder.fork.setText(forks.get(position));
         holder.owner.setText(owners.get(position));
         holder.lastUpdated.setText(lastUpdates.get(position));
-        /*holder.layout.setOnClickListener(new View.OnClickListener() {
+        holder.btnBookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(r_context,Commits.class);
-                i.putExtra("repo",title.get(position));
-                i.putExtra("owner",owners.get(position));
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                r_context.startActivity(i);
-            }
-        });*/
-        //Set Images And Position Here
+                DatabaseHandler db = new DatabaseHandler(r_context);
+                if (db.IsBookmarked(title.get(position))){
 
-    }//onBindViewHolder()
+                 holder.btnBookmark.setImageResource(R.drawable.ic_bookmark_border_black_24dp);
+                    db.deleteBookmark(title.get(position));
+                }else {
+                    holder.btnBookmark.setImageResource(R.drawable.ic_bookmark_black_24dp);
+                    db.addBookmark(title.get(position), lang.get(position), stars.get(position),
+                            forks.get(position), owners.get(position), lastUpdates.get(position));
+                }
+            }
+        });
+
+
+    }
 
     @Override
     public int getItemCount() {
@@ -113,6 +124,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
         TextView fork;
         TextView owner;
         TextView lastUpdated;
+        ImageView btnBookmark;
         LinearLayout layout;
 
         public ViewHolder(View itemView, int item_type, final Context context) {
@@ -123,12 +135,9 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
             starGuage = (TextView) itemView.findViewById(R.id.star);
             fork = (TextView) itemView.findViewById(R.id.fork);
             owner = (TextView) itemView.findViewById(R.id.owner);
-
-
             lastUpdated = (TextView) itemView.findViewById(R.id.updated);
-
             languages = (TextView) itemView.findViewById(R.id.lang);
-
+            btnBookmark = (ImageView) itemView.findViewById(R.id.btn_bookmark);
 
             HolderId = 1;
         }//if

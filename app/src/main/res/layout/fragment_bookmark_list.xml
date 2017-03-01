@@ -2,12 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.saransh.app.gitproxy.BlankFragment">
+    tools:context="com.saransh.app.gitproxy.fragment.RepoList">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:listitem="@layout/list_item"
+        tools:context=".activity.MainActivity"
+        android:divider="?android:dividerHorizontal" />
 
 </FrameLayout>

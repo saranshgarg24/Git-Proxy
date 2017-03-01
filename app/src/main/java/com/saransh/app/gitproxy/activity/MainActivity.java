@@ -1,4 +1,4 @@
-package com.saransh.app.gitproxy;
+package com.saransh.app.gitproxy.activity;
 
 import android.app.SearchManager;
 import android.os.Bundle;
@@ -18,6 +18,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.saransh.app.gitproxy.fragment.BookmarkList;
+import com.saransh.app.gitproxy.helper.DatabaseHandler;
+import com.saransh.app.gitproxy.R;
+import com.saransh.app.gitproxy.fragment.RepoList;
+import com.saransh.app.gitproxy.fragment.SearchList;
 
 
 public class MainActivity extends ActionBarActivity
@@ -113,10 +119,6 @@ public class MainActivity extends ActionBarActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -133,7 +135,10 @@ public class MainActivity extends ActionBarActivity
             fragmentTransaction.replace(R.id.fragment, new SearchList(getApplicationContext()));
             fragmentTransaction.commit();
         } else if (id == R.id.nav_bookmark) {
-
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment, new BookmarkList(getApplicationContext()));
+            fragmentTransaction.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

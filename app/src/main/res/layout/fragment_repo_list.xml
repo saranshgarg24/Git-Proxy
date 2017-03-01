@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.saransh.app.gitproxy.RepoList">
+    tools:context="com.saransh.app.gitproxy.fragment.RepoList">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/list_item"
-        tools:context=".MainActivity"
+        tools:context=".activity.MainActivity"
         android:divider="?android:dividerHorizontal" />
 
 </FrameLayout>

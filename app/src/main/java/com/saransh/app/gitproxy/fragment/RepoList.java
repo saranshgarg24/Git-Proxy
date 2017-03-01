@@ -1,4 +1,4 @@
-package com.saransh.app.gitproxy;
+package com.saransh.app.gitproxy.fragment;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -14,6 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.saransh.app.gitproxy.helper.JSONParser;
+import com.saransh.app.gitproxy.R;
+import com.saransh.app.gitproxy.adapter.RepoAdapter;
 
 import org.json.JSONObject;
 

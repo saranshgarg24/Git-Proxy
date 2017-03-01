@@ -24,11 +24,12 @@
             android:layout_weight="1"
             android:text="Virtual Notice Board"/>
         <ImageView
+            android:id="@+id/btn_bookmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:tint="#4078c0"
-            android:src="@drawable/ic_bookmark_black_24dp"/>
+            android:src="@drawable/ic_bookmark_border_black_24dp"/>
     </LinearLayout>
 
     <TextView

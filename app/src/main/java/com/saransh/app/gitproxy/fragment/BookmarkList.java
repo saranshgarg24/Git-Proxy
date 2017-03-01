@@ -1,6 +1,7 @@
-package com.saransh.app.gitproxy;
+package com.saransh.app.gitproxy.fragment;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,36 +10,51 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.saransh.app.gitproxy.R;
+import com.saransh.app.gitproxy.adapter.BookmarkAdapter;
 
-public class SearchList extends Fragment {
 
+public class BookmarkList extends Fragment {
+
+    RecyclerView r_list;
     Context context;
 
-    public SearchList(Context c) {
-        // Required empty public constructor
+    View v;
+
+
+    public BookmarkList(Context c) {
         context = c;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_search_list, container, false);
-         RecyclerView r_list = (RecyclerView) v.findViewById(R.id.searchList);
+        v = inflater.inflate(R.layout.fragment_bookmark_list, container, false);
+
+        initList();
+
+        return v;
+    }
+    private void initList() {
+        r_list = (RecyclerView) v.findViewById(R.id.list);
 
         LinearLayoutManager llm = new LinearLayoutManager(context);
         r_list.setLayoutManager(llm);
-        SearchAdapter recyclerAdapter = new SearchAdapter(context);
+        BookmarkAdapter recyclerAdapter = new BookmarkAdapter(context);
         r_list.setAdapter(recyclerAdapter);
-        return v;
     }
 
+
+        public void onButtonPressed(Uri uri) {
+
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -48,9 +64,11 @@ public class SearchList extends Fragment {
 
     @Override
     public void onDetach() {
-        super.onDetach();
-
+       super.onDetach();
     }
 
+    public interface OnFragmentInteractionListener {
 
+        void onFragmentInteraction(Uri uri);
+    }
 }
