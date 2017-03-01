@@ -17,7 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.saransh.app.gitproxy.R;
 import com.saransh.app.gitproxy.fragment.BookmarkList;
@@ -114,7 +113,6 @@ public class MainActivity extends AppCompatActivity
                 toolbar.setTitle(query);
                 searchView.clearFocus();
                 searchView.onActionViewCollapsed();
-                Toast.makeText(getApplicationContext(), query, Toast.LENGTH_SHORT).show();
 
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                 db.addSearchQuery(query);
